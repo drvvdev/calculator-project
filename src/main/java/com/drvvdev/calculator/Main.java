@@ -1,14 +1,9 @@
+package com.drvvdev.calculator;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
-       System.out.println("---Тесты---");
-       System.out.println("5 + 3 = " + calculator.calculate(5, 3, "+"));
-       System.out.println("67 - 8 = " + calculator.calculate(67, 8,"-"));
-       System.out.println("42 / 7 = " + calculator.calculate(42, 7, "/"));
-       System.out.println("6 * 7 = " + calculator.calculate(6, 7, "*"));
-       System.out.println("---Конец тестов---");
         while (true) {
             System.out.println("Введи выражение");
             String input = scanner.nextLine();

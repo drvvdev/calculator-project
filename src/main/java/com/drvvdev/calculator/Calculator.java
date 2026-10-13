@@ -1,3 +1,4 @@
+package com.drvvdev.calculator;
 public class Calculator {
     // обьява класса калькулятор
     public double calculate(double a, double b, String operator) {
