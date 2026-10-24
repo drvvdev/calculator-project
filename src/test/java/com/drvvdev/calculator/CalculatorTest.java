@@ -36,6 +36,20 @@ void divisionByZeroThrowException() {
         Calculator calculator = new Calculator();
         assertThrows(ArithmeticException.class, () -> calculator.calculate(5, 0, "/"));
     }
+    @Test
+    void calculationSavedToHistory() {
+        Calculator calculator = new Calculator();
+        calculator.calculate(5, 3, "+");
+        assertEquals(1, calculator.getHistoryManager().size());
+        assertEquals("5.0+3.0=8.0", calculator.getHistoryManager().get(0));
+    }
+    @Test
+    void failedCalculationNotSaved() {
+        Calculator calculator = new Calculator();
+        assertThrows(ArithmeticException.class,() -> calculator.calculate(5, 0, "/"));
+        assertEquals(0, calculator.getHistoryManager().size());
+
+    }
 }
 
 

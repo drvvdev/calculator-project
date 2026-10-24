@@ -6,10 +6,56 @@ public class Main {
         Calculator calculator = new Calculator();
         while (true) {
             System.out.println("Введи выражение");
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
             if (input.equals("exit")) {
                 System.out.println("работа завершена");
                 break; }
+            if (input.equals("history")) {
+                HistoryManager historyManager = calculator.getHistoryManager();
+                if (historyManager.size() ==0) {
+                    System.out.println("история пуста");
+                }
+                for (int i = 0; i < historyManager.size(); i++) {
+                    System.out.println(historyManager.get(i));
+                }
+                continue;
+            }
+            if (input.equals("last")) {
+                HistoryManager historyManager = calculator.getHistoryManager();
+                String lastOperation = historyManager.getLast();
+                if (lastOperation == null) {
+                    System.out.println("программа пуста");
+                    continue;
+                }
+                System.out.println(lastOperation);
+                continue;
+            }
+                if (input.equals("clear")) {
+                    HistoryManager historyManager1 = calculator.getHistoryManager();
+                    historyManager1.clear();
+                    System.out.println("история очищена");
+                    continue;
+                    }
+                    if (input.equals("help")) {
+                        System.out.println("Доступные команды:\n" +
+                                "\n" +
+                                "<число> <оператор> <число>\n" +
+                                "\n" +
+                                "Операторы:\n" +
+                                "+ — сложение\n" +
+                                "- — вычитание\n" +
+                                "* — умножение\n" +
+                                "/ — деление\n" +
+                                "\n" +
+                                "Дополнительные команды:\n" +
+                                "history — показать историю\n" +
+                                "last — повторить последнюю операцию\n" +
+                                "clear — очистить историю\n" +
+                                "help — показать эту справку\n" +
+                                "exit — выход");
+                        continue;
+                    }
+
                 try {
                  String[] parts = input.split(" ");
                     double a = Double.parseDouble(parts[0]);
