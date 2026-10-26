@@ -1,4 +1,7 @@
-package com.drvvdev.calculator;
+package com.drvvdev.calculator.calculator;
+import com.drvvdev.calculator.history.HistoryManager;
+import com.drvvdev.calculator.operations.*;
+
 import java.util.HashMap;
 import java.util.Map;
 public class Calculator {

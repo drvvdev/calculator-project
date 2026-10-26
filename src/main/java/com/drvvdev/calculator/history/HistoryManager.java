@@ -1,4 +1,4 @@
-package com.drvvdev.calculator;
+package com.drvvdev.calculator.history;
 
 import java.util.ArrayList;
 

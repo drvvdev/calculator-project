@@ -1,4 +1,4 @@
-package com.drvvdev.calculator;
+package com.drvvdev.calculator.operations;
 
 public class SubstractOperation implements Operation {
     @Override

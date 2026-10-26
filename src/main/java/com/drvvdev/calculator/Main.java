@@ -1,4 +1,7 @@
 package com.drvvdev.calculator;
+import com.drvvdev.calculator.calculator.Calculator;
+import com.drvvdev.calculator.history.HistoryManager;
+
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
