@@ -27,7 +27,7 @@ public class Main {
                     System.out.println("программа пуста");
                     continue;
                 }
-                System.out.println(lastOperation);
+                System.out.println(calculator.repeatLast());
                 continue;
             }
                 if (input.equals("clear")) {
@@ -37,39 +37,46 @@ public class Main {
                     continue;
                     }
                     if (input.equals("help")) {
-                        System.out.println("Доступные команды:\n" +
-                                "\n" +
-                                "<число> <оператор> <число>\n" +
-                                "\n" +
-                                "Операторы:\n" +
-                                "+ — сложение\n" +
-                                "- — вычитание\n" +
-                                "* — умножение\n" +
-                                "/ — деление\n" +
-                                "\n" +
-                                "Дополнительные команды:\n" +
-                                "history — показать историю\n" +
-                                "last — повторить последнюю операцию\n" +
-                                "clear — очистить историю\n" +
-                                "help — показать эту справку\n" +
-                                "exit — выход");
+                        printHelp();
                         continue;
                     }
-
-                try {
-                 String[] parts = input.split(" ");
-                    double a = Double.parseDouble(parts[0]);
-                    String operator = parts[1];
-                    double b = Double.parseDouble(parts[2]);
-                    double result = calculator.calculate(a, b, operator);
-                    System.out.println(a + " " + operator + " " + b + " = " + result);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("ошибка: неверный формат пиши очисло оператор число ");
-                } catch (ArithmeticException e) {
-                    System.out.println("ошибка: деление на ноль ");
-                } catch (NumberFormatException e) {
-                    System.out.println("ошибка: неверный формат пиши очисло оператор число");
-                }
+                    processCalculation(input, calculator);
+            }
+        }
+        private static void printHelp() {
+            System.out.println("Доступные команды:\n" +
+                    "\n" +
+                    "<число> <оператор> <число>\n" +
+                    "\n" +
+                    "Операторы:\n" +
+                    "+ — сложение\n" +
+                    "- — вычитание\n" +
+                    "* — умножение\n" +
+                    "/ — деление\n" +
+                    "\n" +
+                    "Дополнительные команды:\n" +
+                    "history — показать историю\n" +
+                    "last — повторить последнюю операцию\n" +
+                    "clear — очистить историю\n" +
+                    "help — показать эту справку\n" +
+                    "exit — выход");
+        }
+        private static void processCalculation(String input, Calculator calculator) {
+            try {
+                String[] parts = input.split("\\s+");
+                double a = Double.parseDouble(parts[0]);
+                String operator = parts[1];
+                double b = Double.parseDouble(parts[2]);
+                double result = calculator.calculate(a, b, operator);
+                System.out.println(a + " " + operator + " " + b + " = " + result);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("ошибка: неверный формат пиши очисло оператор число ");
+            } catch (ArithmeticException e) {
+                System.out.println("ошибка: деление на ноль ");
+            } catch (NumberFormatException e) {
+                System.out.println("ошибка: неверный формат пиши очисло оператор число");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: неизвестный оператор");
             }
         }
     }
